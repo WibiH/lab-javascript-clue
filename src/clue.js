@@ -106,25 +106,36 @@ const weaponsArray = [
 // ITERATION 2
 
 function selectRandom(card) {
-  let randomCard = Math.floor(Math.random() * card.length);
-  let oneCard = card[randomCard];
+  const randomCard = Math.floor(Math.random() * card.length);
+  const oneCard = card[randomCard];
   return oneCard;
 }
 
+/* first version
 function pickMystery() {
-  let mysteryMix = {};
+const cards = {};
+for (let i = 0; i <= pickMystery.length; i++) {
+  cards.suspect = selectRandom(suspectsArray);
+  cards.weapon = selectRandom(weaponsArray);
+  cards.room = selectRandom(roomsArray);
+}
+return cards;
+}
+*/
 
-  for (let i = 0; i <= pickMystery.length; i++) {
-    mysteryMix.suspect = suspectsArray[i];
-    mysteryMix.weapon = weaponsArray[i];
-    mysteryMix.room = roomsArray[i];
-  }
-  return mysteryMix;
+function pickMystery() {
+  const cards = {
+    suspect: selectRandom(suspectsArray),
+    weapon: selectRandom(weaponsArray),
+    room: selectRandom(roomsArray)
+  };
+  return cards;
 }
 
 // ITERATION 3
 
 function revealMystery() {
-  let envelope = mysteryMix;
-  return `${envelope.firstName} ${envelope.lastName} killed Mr. Boddy using the ${envelope.name} in the ${envelope.name}!`;
+ const envelope = pickMystery;
+  return "suspect.firstName suspect.lastName 'killed Mr. Boddy using the' weapon.name 'in the' room.name!";
 }
+revealMystery(envelope);
